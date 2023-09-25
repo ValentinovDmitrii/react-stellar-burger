@@ -1,6 +1,27 @@
 .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 16px 320px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 16px auto;
+  align-items: center;
+  color: #8585AD;
+  min-width: 1280px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  composes: buttons;
+  padding: 16px 20px;
+  cursor: pointer;
+  &:hover {
+    color: white;
+  }
 }
