@@ -1,16 +1,13 @@
 import React from "react";
 
-import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-
 import '../common.css';
 
-import styles from './burgerIngredients.module.css';
+import styles from './typeIngredients.module.css';
 
-function BurgerIngredients () {
-  const [current, setCurrent] = React.useState('bun');
+function TypeIngredients ({caption}) {
   return (
     <div className={styles.ingredients}>
-      <h1 className={`${styles.header} text text_type_main-large`} >Соберите бургер</h1>
+      <h2 className={`${styles.header} text text_type_main-large`} >Соберите бургер</h2>
       <div style={{ display: 'flex' }}>
         <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
           Булки
@@ -26,4 +23,4 @@ function BurgerIngredients () {
   );
 };
 
-export default BurgerIngredients;
+export default TypeIngredients;

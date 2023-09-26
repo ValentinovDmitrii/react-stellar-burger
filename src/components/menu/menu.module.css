@@ -1,0 +1,6 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: var(x10);
+  align-self: center;
+}
