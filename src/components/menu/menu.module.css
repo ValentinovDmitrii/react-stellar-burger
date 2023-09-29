@@ -1,6 +1,5 @@
 .menu {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 600px 600px;
   gap: var(x10);
-  align-self: center;
 }

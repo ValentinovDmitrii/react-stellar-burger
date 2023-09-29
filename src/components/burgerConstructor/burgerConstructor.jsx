@@ -5,7 +5,7 @@ import styles from './burgerConstructor.module.css';
 class BurgerConstructor extends React.Component {
   render () {
     return (
-      <div>
+      <div className={styles.order}>
 
       </div>
     );

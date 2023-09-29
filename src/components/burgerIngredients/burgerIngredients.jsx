@@ -2,6 +2,8 @@ import React from "react";
 
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
+import Cards from "../cards/cards";
+
 import '../common.css';
 
 import styles from './burgerIngredients.module.css';
@@ -11,7 +13,7 @@ function BurgerIngredients () {
   return (
     <div className={styles.ingredients}>
       <h1 className={`${styles.header} text text_type_main-large`} >Соберите бургер</h1>
-      <div style={{ display: 'flex' }}>
+      <div className={styles.tabs}>
         <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
           Булки
         </Tab>
@@ -21,7 +23,28 @@ function BurgerIngredients () {
         <Tab value="main" active={current === 'main'} onClick={setCurrent}>
           Начинки
         </Tab>
-  </div>
+      </div>
+
+      <ul className={`${styles.chapters} custom-scroll`}>
+        <li>
+          <h2 className='text text_type_main-medium'>Булки</h2>
+          <section className={styles.container}>
+            <Cards chapter='bun' />
+          </section>
+        </li>
+        <li>
+          <h2 className='text text_type_main-medium'>Соусы</h2>
+          <section className={styles.container}>
+            <Cards chapter='sauce' />
+          </section>
+        </li>
+        <li>
+          <h2 className='text text_type_main-medium'>Начинки</h2>
+          <section className={styles.container}>
+            <Cards chapter='main' />
+          </section>
+        </li>
+      </ul>
     </div>
   );
 };

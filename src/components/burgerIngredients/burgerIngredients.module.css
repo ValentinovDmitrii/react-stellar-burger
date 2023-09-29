@@ -8,3 +8,24 @@
 .header {
   margin-top: 20px;
 }
+
+.tabs {
+  display: flex;
+}
+
+.chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  list-style-type: none;
+  max-height: 756px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}  
+
+.container {
+  display: grid;
+  grid-template-columns: 272px 272px;
+  column-gap: 8px;
+  row-gap: 32px;
+}

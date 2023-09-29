@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 24px;
+  overflow: visible;
+  overflow-wrap: normal;
+}
+
+.price {
+  display: flex;
+  flex-direction: row;
+}
+
+.illustration {
+  margin: 0 16px;
+}
+
+.description {
+  white-space: normal;
+  text-align: center;
+}
