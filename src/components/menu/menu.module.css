@@ -1,5 +1,7 @@
 .menu {
   display: grid;
   grid-template-columns: 600px 600px;
-  gap: var(x10);
+  gap: 40px;
+  justify-content: center;
+  padding: 40px 0;
 }

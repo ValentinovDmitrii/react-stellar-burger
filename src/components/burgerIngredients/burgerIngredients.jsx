@@ -26,19 +26,19 @@ function BurgerIngredients () {
       </div>
 
       <ul className={`${styles.chapters} custom-scroll`}>
-        <li>
+        <li className={styles.chapter}>
           <h2 className='text text_type_main-medium'>Булки</h2>
           <section className={styles.container}>
             <Cards chapter='bun' />
           </section>
         </li>
-        <li>
+        <li className={styles.chapter}>
           <h2 className='text text_type_main-medium'>Соусы</h2>
           <section className={styles.container}>
             <Cards chapter='sauce' />
           </section>
         </li>
-        <li>
+        <li className={styles.chapter}>
           <h2 className='text text_type_main-medium'>Начинки</h2>
           <section className={styles.container}>
             <Cards chapter='main' />

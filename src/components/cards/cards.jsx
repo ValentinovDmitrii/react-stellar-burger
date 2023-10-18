@@ -8,7 +8,7 @@ function Cards ({chapter}) {
     data.map((item) => {
       return item.type === chapter ? 
 
-      <section className={styles.card}>
+      <section className={styles.card} key={item._id}>
         <img src={item.image} className={styles.illustration} alt='продукт'/>
         <section className={styles.price}>
           <span className='text text_type_digits-default'>{item.price}</span>

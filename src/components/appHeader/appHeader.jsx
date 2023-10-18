@@ -12,7 +12,7 @@ class AppHeader extends React.Component {
       <div className={`${styles.header} text text_type_main-default`}>
         <ol className={styles.buttons}>
           <li className={styles.button}>
-            <BurgerIcon type="secondary" />
+            <BurgerIcon type="primary" />
             <span className={styles.buttonText}>Конструктор</span>
           </li>
           <li className={styles.button}>
