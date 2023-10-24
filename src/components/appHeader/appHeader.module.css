@@ -13,8 +13,8 @@
 .buttons {
   display: flex;
   flex-direction: row;
-  justify-self: start;
-  justify-content: start;
+  justify-self: flex-start;
+  justify-content: flex-start;
   gap: 8px;
   margin: 0;
   padding: 0;

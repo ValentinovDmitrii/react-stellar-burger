@@ -11,9 +11,9 @@ import styles from './burgerIngredients.module.css';
 function BurgerIngredients () {
   const [current, setCurrent] = React.useState('bun');
   return (
-    <div className={styles.ingredients}>
+    <section className={styles.ingredients}>
       <h1 className={`${styles.header} text text_type_main-large`} >Соберите бургер</h1>
-      <div className={styles.tabs}>
+      <section className={styles.tabs}>
         <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
           Булки
         </Tab>
@@ -23,7 +23,7 @@ function BurgerIngredients () {
         <Tab value="main" active={current === 'main'} onClick={setCurrent}>
           Начинки
         </Tab>
-      </div>
+      </section>
 
       <ul className={`${styles.chapters} custom-scroll`}>
         <li className={styles.chapter}>
@@ -45,7 +45,7 @@ function BurgerIngredients () {
           </section>
         </li>
       </ul>
-    </div>
+    </section>
   );
 };
 

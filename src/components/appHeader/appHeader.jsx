@@ -9,7 +9,7 @@ import styles from './appHeader.module.css';
 class AppHeader extends React.Component {
   render () {
     return (
-      <div className={`${styles.header} text text_type_main-default`}>
+      <h1 className={`${styles.header} text text_type_main-default`}>
         <ol className={styles.buttons}>
           <li className={styles.button}>
             <BurgerIcon type="primary" />
@@ -25,7 +25,7 @@ class AppHeader extends React.Component {
           <ProfileIcon type="secondary"/>
           <span className={styles.buttonText}>Личный кабинет</span>
         </span>
-      </div>
+      </h1>
     );
   };
 }

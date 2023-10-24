@@ -7,10 +7,10 @@ import styles from './menu.module.css';
 class Menu extends React.Component {
   render () {
     return (
-      <div className={styles.menu}>
+      <section className={styles.menu}>
         <BurgerIngredients />
         <BurgerConstructor />
-      </div>
+      </section>
     );
   };
 }
