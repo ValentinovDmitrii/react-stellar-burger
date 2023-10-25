@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import { ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import BurgerItems from '../burgerItems/burgerItems';
@@ -52,6 +53,10 @@ class BurgerConstructor extends React.Component {
       </section>
     );
   };
+}
+
+BurgerConstructor.propTypes = {
+  burger: PropTypes.object
 }
 
 export default BurgerConstructor;

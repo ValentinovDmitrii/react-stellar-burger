@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { data } from "../../utils/data";
 import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 
@@ -21,5 +23,9 @@ function Cards ({chapter}) {
     })
   );
 };
+
+Cards.propTypes = {
+  chapter: PropTypes.string
+}
 
 export default Cards;
