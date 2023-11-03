@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
-
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-
-import styles from './burgerItems.module.css';
+import styles from './burger-items.module.css';
+import { ingredientPropType } from '../../utils/prop-types';
 
 function BurgerItems (props) {
-    const children = props.children;
     return (
-        children.map((item) => {
+        props.burgerItems.map((item) => {
             return (
             <section className={styles.item} key={item._id}>
                 <DragIcon type="primary" />
@@ -23,7 +21,7 @@ function BurgerItems (props) {
 }
 
 BurgerItems.propTypes = {
-    children: PropTypes.array
+    burgerItems: PropTypes.arrayOf(ingredientPropType.isRequired).isRequired
 }
 
 export default BurgerItems;

@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types';
+import { ingredientPropType } from '../../utils/prop-types';
 
-import { data } from "../../utils/data";
 import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 
 import styles from './cards.module.css';
 
-function Cards ({chapter}) {
+function Cards (props) {
   return (
-    data.map((item) => {
-      return item.type === chapter ? 
-
+    props.data.map((item) => (
       <section className={styles.card} key={item._id}>
         <img src={item.image} className={styles.illustration} alt='продукт'/>
         <section className={styles.price}>
@@ -18,14 +16,12 @@ function Cards ({chapter}) {
         </section>
         <p className={`${styles.description} text text_type_main-default`}>{item.name}</p>
       </section>
-
-      : null
-    })
+    ))
   );
 };
 
 Cards.propTypes = {
-  chapter: PropTypes.string
+  data: PropTypes.arrayOf(ingredientPropType.isRequired).isRequired
 }
 
 export default Cards;

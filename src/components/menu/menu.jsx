@@ -1,18 +1,18 @@
 import React from "react";
-import BurgerIngredients from "../burgerIngredients/burgerIngredients";
-import BurgerConstructor from "../burgerConstructor/burgerConstructor";
+import BurgerIngredients from "../burger-ingredients/burger-ingredients";
+import BurgerConstructor from "../burger-constructor/burger-constructor";
 
 import styles from './menu.module.css';
 
-class Menu extends React.Component {
-  render () {
+import { burger } from "../../utils/data";
+
+function Menu () {
     return (
       <section className={styles.menu}>
         <BurgerIngredients />
-        <BurgerConstructor />
+        <BurgerConstructor topBun={burger.topBun} bottomBun={burger.bottomBun} burgerItems={burger.burgerItems} />
       </section>
     );
-  };
 }
 
 export default Menu;

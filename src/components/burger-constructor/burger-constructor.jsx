@@ -1,46 +1,38 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { ingredientPropType } from '../../utils/prop-types';
 
 import { ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import BurgerItems from '../burgerItems/burgerItems';
+import BurgerItems from '../burger-items/burger-items';
 
-import styles from './burgerConstructor.module.css';
+import styles from './burger-constructor.module.css';
 
-import { burger } from "../../utils/data";
-
-class BurgerConstructor extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      topBun: burger.topBun,
-      bottomBun: burger.bottomBun,
-      burgerItems: burger.burgerItems,
-    };
-  };
-
-  render () {
-    const totalPrice = this.state.burgerItems.reduce((acc, p) => acc + p.price, this.state.topBun.price+this.state.bottomBun.price);
+function BurgerConstructor (props) {
+  const [topBun, setTopBun] = React.useState(props.topBun);
+  const [bottomBun, setBottomBun] = React.useState(props.bottomBun);
+  const [burgerItems, setBurgerItems] = React.useState(props.burgerItems);
+    const totalPrice = burgerItems.reduce((acc, p) => acc + p.price, topBun.price+bottomBun.price);
     return (
       <section className={styles.order}>
         <section className={styles.bun}>
           <ConstructorElement 
           type="top"
           isLocked={true}
-          text={this.state.topBun.name + ' (верх)'}
-          price={this.state.topBun.price}
-          thumbnail={this.state.topBun.image_mobile}
+          text={topBun.name + ' (верх)'}
+          price={topBun.price}
+          thumbnail={topBun.image_mobile}
           />
         </section>
         <section className={`${styles.burgerItems} custom-scroll`}>
-          <BurgerItems>{this.state.burgerItems}</BurgerItems>
+          <BurgerItems burgerItems={burgerItems}></BurgerItems>
         </section>
         <section className={styles.bun}>
           <ConstructorElement
             type="bottom"
             isLocked={true}
-            text={this.state.bottomBun.name + ' (низ)'}
-            price={this.state.bottomBun.price}
-            thumbnail={this.state.bottomBun.image_mobile}
+            text={bottomBun.name + ' (низ)'}
+            price={bottomBun.price}
+            thumbnail={bottomBun.image_mobile}
           />
         </section>
         <section className={styles.info}>
@@ -52,11 +44,12 @@ class BurgerConstructor extends React.Component {
         </section>
       </section>
     );
-  };
 }
 
 BurgerConstructor.propTypes = {
-  burger: PropTypes.object
+  topBun: PropTypes.objectOf(ingredientPropType),
+  bottomBun: PropTypes.objectOf(ingredientPropType),
+  burgerItems: PropTypes.arrayOf(ingredientPropType),
 }
 
 export default BurgerConstructor;
