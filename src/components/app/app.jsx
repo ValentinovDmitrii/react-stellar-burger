@@ -6,8 +6,8 @@ import Menu from "../menu/menu";
 function App() {
   return (
     <div className={styles.app}>
-      	  <AppHeader />
-          <Menu />
+      <AppHeader />
+      <Menu />
     </div>
   );
 }

@@ -17,7 +17,7 @@ function BurgerIngredients () {
   const sauces = React.useMemo(() => internalData.filter((item) => item.type === 'sauce'), [internalData]);
   return (
     <section className={styles.ingredients}>
-      <h1 className={`${styles.header} text text_type_main-large`} >Соберите бургер</h1>
+      <h1 className={styles.header} >Соберите бургер</h1>
       <section className={styles.tabs}>
         <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
           Булки

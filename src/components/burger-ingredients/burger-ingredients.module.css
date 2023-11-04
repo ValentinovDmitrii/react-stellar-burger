@@ -6,6 +6,7 @@
 }
 
 .header {
+  composes: text_type_main-default from "../common.css";
   margin: 0;
 }
 
