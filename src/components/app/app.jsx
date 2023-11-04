@@ -1,20 +1,13 @@
 import styles from "./app.module.css";
 
-import AppHeader from "../appHeader/appHeader";
+import AppHeader from "../app-header/app-header";
 import Menu from "../menu/menu";
 
 function App() {
   return (
     <div className={styles.app}>
-      <pre style={{
-      	margin: "auto",
-      	fontSize: "1.5rem"
-      }}>
-        <>
       	  <AppHeader />
           <Menu />
-        </>
-      </pre>
     </div>
   );
 }
