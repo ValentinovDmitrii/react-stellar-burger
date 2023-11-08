@@ -1,13 +1,13 @@
 import styles from "./app.module.css";
 
 import AppHeader from "../app-header/app-header";
-import Menu from "../menu/menu";
+import Main from "../main/main";
 
 function App() {
   return (
     <div className={styles.app}>
       <AppHeader />
-      <Menu />
+      <Main />
     </div>
   );
 }

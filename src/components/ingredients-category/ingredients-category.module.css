@@ -1,4 +1,4 @@
-.card {
+.category {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -24,4 +24,12 @@
 .description {
   white-space: normal;
   text-align: center;
+}
+
+.container {
+  padding: 24px 16px 40px;
+  display: grid;
+  grid-template-columns: 272px 272px;
+  column-gap: 24px;
+  row-gap: 32px;
 }

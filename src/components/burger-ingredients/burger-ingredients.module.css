@@ -29,11 +29,3 @@
 .chapter {
   margin: 20px 0 0;
 }
-
-.container {
-  padding: 24px 16px 40px;
-  display: grid;
-  grid-template-columns: 272px 272px;
-  column-gap: 24px;
-  row-gap: 32px;
-}

@@ -2,37 +2,46 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { ingredientPropType } from '../../utils/prop-types';
 
-import { ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import BurgerItems from '../burger-items/burger-items';
+import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import styles from './burger-constructor.module.css';
 
 function BurgerConstructor (props) {
-  const [topBun, setTopBun] = React.useState(props.topBun);
-  const [bottomBun, setBottomBun] = React.useState(props.bottomBun);
-  const [burgerItems, setBurgerItems] = React.useState(props.burgerItems);
-  const totalPrice = burgerItems.reduce((acc, p) => acc + p.price, topBun.price+bottomBun.price);
+  const bun = props.data.find(item => item.type === 'bun');
+  const ingredients = props.data.filter(item => item.type !== 'bun');
+  const totalPrice = ingredients.reduce((acc, p) => p.type !== 'bun' ? acc + p.price : acc, bun.price*2);
   return (
     <section className={styles.order}>
       <section className={styles.bun}>
         <ConstructorElement 
         type="top"
         isLocked={true}
-        text={topBun.name + ' (верх)'}
-        price={topBun.price}
-        thumbnail={topBun.image_mobile}
+        text={bun.name + ' (верх)'}
+        price={bun.price}
+        thumbnail={bun.image_mobile}
         />
       </section>
       <section className={`${styles.burgerItems} custom-scroll`}>
-        <BurgerItems burgerItems={burgerItems}></BurgerItems>
+      {ingredients.map((item) => {
+        return (
+          <section className={styles.item} key={item._id}>
+            <DragIcon type="primary" />
+            <ConstructorElement
+             text={item.name}
+             price={item.price}
+              thumbnail={item.image_mobile}
+            />
+          </section>
+       );
+     })};
       </section>
       <section className={styles.bun}>
         <ConstructorElement
           type="bottom"
           isLocked={true}
-          text={bottomBun.name + ' (низ)'}
-          price={bottomBun.price}
-          thumbnail={bottomBun.image_mobile}
+          text={bun.name + ' (низ)'}
+          price={bun.price}
+          thumbnail={bun.image_mobile}
         />
       </section>
       <section className={styles.info}>
@@ -47,9 +56,7 @@ function BurgerConstructor (props) {
 }
 
 BurgerConstructor.propTypes = {
-  topBun: PropTypes.objectOf(ingredientPropType),
-  bottomBun: PropTypes.objectOf(ingredientPropType),
-  burgerItems: PropTypes.arrayOf(ingredientPropType),
+  data: PropTypes.arrayOf(ingredientPropType.isRequired).isRequired,
 }
 
 export default BurgerConstructor;
