@@ -1,6 +1,7 @@
 import style from './modal-overlay.module.css';
 import React, { useEffect } from 'react';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
 
 export default function ModalOverlay (props) {
   useEffect(() => {
@@ -27,4 +28,8 @@ export default function ModalOverlay (props) {
       </form>
     </div>
   );
+}
+
+ModalOverlay.propTypes = {
+  onCloseButtonClick: PropTypes.func.isRequired,
 }

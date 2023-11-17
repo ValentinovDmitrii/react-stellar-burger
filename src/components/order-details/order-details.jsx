@@ -1,6 +1,7 @@
 import style from './order-details.module.css';
 import React from "react";
 import ModalOverlay from "../modal-overlay/modal-overlay";
+import PropTypes from 'prop-types';
 
 export default function OrderDetails(props) {
   return (
@@ -12,4 +13,9 @@ export default function OrderDetails(props) {
       <span className={style.wait}>Дождитесь готовности на орбитальной станции</span>
     </ModalOverlay>    
   )
+}
+
+OrderDetails.propTypes = {
+  onCloseButtonClick: PropTypes.func.isRequired,
+  orderNumber: PropTypes.string.isRequired,
 }
