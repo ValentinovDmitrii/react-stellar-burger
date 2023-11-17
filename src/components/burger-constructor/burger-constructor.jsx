@@ -45,7 +45,7 @@ function BurgerConstructor (props) {
         />
       </section>
       <section className={styles.info}>
-        <Button htmlType="button" type="primary" size="large">Оформить заказ</Button>  
+        <Button htmlType="button" type="primary" size="large" onClick={props.handleClick}>Оформить заказ</Button>  
         <section className={styles.price}>
           <span className='text text_type_digits-medium'>{totalPrice}</span>
           <CurrencyIcon type="primary" />

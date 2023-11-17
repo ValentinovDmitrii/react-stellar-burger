@@ -30,13 +30,13 @@ function BurgerIngredients (props) {
 
       <ul className={`${styles.chapters} custom-scroll`}>
         <li className={styles.chapter}>
-          <IngredientsCategory data={buns} title='Булки' />
+          <IngredientsCategory data={buns} title='Булки' handleClick={props.handleClick} />
         </li>
         <li className={styles.chapter}>
-          <IngredientsCategory data={sauces} title='Соусы' />
+          <IngredientsCategory data={sauces} title='Соусы' handleClick={props.handleClick} />
         </li>
         <li className={styles.chapter}>
-          <IngredientsCategory data={mains} title='Начинки' />
+          <IngredientsCategory data={mains} title='Начинки' handleClick={props.handleClick} />
         </li>
       </ul>
     </section>

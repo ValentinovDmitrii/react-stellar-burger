@@ -1,0 +1,29 @@
+.orderNumber {
+  margin: 16px auto 0;
+  composes: text_type_digits-large from "../common.css";
+}
+
+.text {
+  margin: 32px auto 0;
+  composes: text_type_main-medium from "../common.css";
+}
+
+.button {
+  margin: 60px auto 0;
+  background-image: url('../../../public/done.svg');
+  width: 120px;
+  height: 120px;
+  border: 0;
+  cursor: pointer;
+}
+
+.info {
+  margin: 60px auto 0;
+  composes: text_type_main-default from "../common.css";
+}
+
+.wait {
+  margin: 8px auto 80px;
+  composes: text_type_main-default from "../common.css";
+  color: #8585AD;
+}
