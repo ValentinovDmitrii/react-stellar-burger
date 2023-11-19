@@ -9,7 +9,7 @@ import { burger } from "../../utils/data";
 import PropTypes from 'prop-types';
 import { ingredientPropType } from '../../utils/prop-types';
 
-function Main (props) {
+export default function Main (props) {
   return (
     <section className={styles.main}>
       <BurgerIngredients data = {props.data} handleClick={props.onClickIngredient} />
@@ -21,6 +21,3 @@ function Main (props) {
 Main.propTypes = {
   data: PropTypes.arrayOf(ingredientPropType.isRequired).isRequired,
 }
-
-
-export default Main;

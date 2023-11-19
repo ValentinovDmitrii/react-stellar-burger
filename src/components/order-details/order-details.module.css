@@ -10,7 +10,7 @@
 
 .button {
   margin: 60px auto 0;
-  background-image: url('../../../public/done.svg');
+  background-image: url('../../../src/images/done.svg');
   width: 120px;
   height: 120px;
   border: 0;

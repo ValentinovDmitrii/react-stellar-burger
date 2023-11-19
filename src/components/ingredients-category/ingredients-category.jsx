@@ -5,7 +5,7 @@ import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components
 
 import styles from './ingredients-category.module.css';
 
-function IngredientsCategory (props) {
+export default function IngredientsCategory (props) {
   return (
     <>
     <h2 className={styles.title}>{props.title}</h2>
@@ -29,5 +29,3 @@ IngredientsCategory.propTypes = {
   title: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(ingredientPropType.isRequired).isRequired
 }
-
-export default IngredientsCategory;
