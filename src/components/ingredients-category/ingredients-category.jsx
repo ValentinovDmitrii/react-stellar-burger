@@ -5,13 +5,13 @@ import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components
 
 import styles from './ingredients-category.module.css';
 
-export default function IngredientsCategory (props) {
+export default function IngredientsCategory ({title, data, handleClick}) {
   return (
     <>
-    <h2 className={styles.title}>{props.title}</h2>
+    <h2 className={styles.title}>{title}</h2>
     <section className={styles.container}>
-      {props.data.map((item) => (
-        <section className={styles.category} key={item._id} onClick={() => props.handleClick(item._id)}>
+      {data.map((item) => (
+        <section className={styles.category} key={item._id} onClick={() => handleClick(item._id)}>
           <img src={item.image} className={styles.illustration} alt='продукт'/>
           <section className={styles.price}>
             <span>{item.price}</span>
@@ -27,5 +27,6 @@ export default function IngredientsCategory (props) {
 
 IngredientsCategory.propTypes = {
   title: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(ingredientPropType.isRequired).isRequired
+  data: PropTypes.arrayOf(ingredientPropType.isRequired).isRequired,
+  handleClick: PropTypes.func.isRequired
 }

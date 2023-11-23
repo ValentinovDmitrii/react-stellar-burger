@@ -6,18 +6,19 @@ import styles from './burger-ingredients.module.css';
 import PropTypes from 'prop-types';
 import { ingredientPropType } from '../../utils/prop-types';
 import IngredientDetails from '../ingredient-details/ingredient-details';
+import Modal from "../modal/modal";
 
-export default function BurgerIngredients (props) {
+export default function BurgerIngredients ({data}) {
   const [current, setCurrent] = React.useState('bun');
-  const buns = React.useMemo(() => props.data.filter((item) => item.type === 'bun'), [props.data]);
-  const mains = React.useMemo(() => props.data.filter((item) => item.type === 'main'), [props.data]);
-  const sauces = React.useMemo(() => props.data.filter((item) => item.type === 'sauce'), [props.data]);
+  const buns = React.useMemo(() => data.filter((item) => item.type === 'bun'), [data]);
+  const mains = React.useMemo(() => data.filter((item) => item.type === 'main'), [data]);
+  const sauces = React.useMemo(() => data.filter((item) => item.type === 'sauce'), [data]);
 
   const [showIngredientDetails, setShowIngredientDetails] = useState(false);
   const [ingredient, setIngredient] = useState(null);
 
   function handleIngredientClick(_id) {
-    setIngredient(props.data.find(item => item['_id'] === _id));
+    setIngredient(data.find(item => item['_id'] === _id));
     toggleShowIngredient();
   }
 
@@ -25,13 +26,13 @@ export default function BurgerIngredients (props) {
     setShowIngredientDetails(!showIngredientDetails);
   }
 
-  const modalIngredientDetails = (
-    <IngredientDetails ingredient={ingredient} show={showIngredientDetails} onCloseButtonClick={toggleShowIngredient} />
-  );
-
   return (
     <section className={styles.ingredients}>
-      {showIngredientDetails && modalIngredientDetails}
+      {showIngredientDetails &&
+        <Modal title={'Детали ингредиента'} onClose={toggleShowIngredient}>
+          <IngredientDetails ingredient={ingredient} />
+        </Modal> 
+      }
       <h1 className={styles.header} >Соберите бургер</h1>
       <section className={styles.tabs}>
         <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>

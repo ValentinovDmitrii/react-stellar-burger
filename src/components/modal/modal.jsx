@@ -5,38 +5,48 @@ import PropTypes from 'prop-types';
 import ModalOverlay from '../modal-overlay/modal-overlay';
 import { createPortal } from 'react-dom';
 
+const idOverlay = 'overlay';
 
-export default function Modal (props) {
+export default function Modal ({title, children, onClose}) {
   const modalRoot = document.getElementById("react-modals"); 
-  
+
   useEffect(() => {
-    const close = (e) => {
-      if (e.keyCode === 27) {
-        props.onCloseButtonClick();
+    const closeKey = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
       }
     };
-    window.addEventListener('keydown', close);
+
+    window.addEventListener('keydown', closeKey);
    
-    return () => window.removeEventListener('keydown', close);
+    return () => window.removeEventListener('keydown', closeKey);
   });
+
+  function handleModalClose(e){
+    if (e.target.id === idOverlay) {
+      onClose();
+    }
+  }
     
   return createPortal (
     (
-    <ModalOverlay onCloseButtonClick={props.onCloseButtonClick}>
-      <form className={style.card} onClick={(e)=>e.stopPropagation()}>
+    <ModalOverlay id={idOverlay} onClick={handleModalClose}>
+      <div className={style.card}>
         <section className={style.header}>
-          <span className={style.title}>{props.title}</span>
+          <span className={style.title}>{title}</span>
           <section className={style.closeButton}>
-            <CloseIcon type="primary" onClick={props.onCloseButtonClick} />
+            <CloseIcon type="primary" onClick={onClose} />
           </section>
         </section>
-        {props.children}
-      </form>
+        {children}
+      </div>
     </ModalOverlay>
     ), modalRoot
   );
 }
 
 Modal.propTypes = {
-  onCloseButtonClick: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 }

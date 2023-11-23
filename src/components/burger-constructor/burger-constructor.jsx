@@ -4,11 +4,12 @@ import { ingredientPropType } from '../../utils/prop-types';
 import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './burger-constructor.module.css';
 import OrderDetails from "../order-details/order-details";
+import Modal from "../modal/modal";
 
-export default function BurgerConstructor (props) {
-  const bun = props.data.find(item => item.type === 'bun');
-  const ingredients = props.data.filter(item => item.type !== 'bun');
-  const totalPrice = ingredients.reduce((acc, p) => p.type !== 'bun' ? acc + p.price : acc, bun.price*2);
+export default function BurgerConstructor ({data}) {
+  const bun = data.find(item => item.type === 'bun');
+  const ingredients = data.filter(item => item.type !== 'bun');
+  const totalPrice = React.useMemo(() => ingredients.reduce((acc, p) => acc + p.price, bun.price*2),[ingredients, bun]);
   const [showOrderDetails, setShowOrderDetails] = useState(false);
 
   function handleOrderClick () {
@@ -19,13 +20,13 @@ export default function BurgerConstructor (props) {
     setShowOrderDetails(!showOrderDetails);
   }
 
-  const modalOrderDetails = (
-    <OrderDetails orderNumber={'034536'} show={showOrderDetails} onCloseButtonClick={toggleOrderDetails} />
-  )
-
   return (
     <section className={styles.order}>
-      {showOrderDetails && modalOrderDetails}
+      {showOrderDetails && 
+        <Modal title={''} onClose={toggleOrderDetails}>
+          <OrderDetails orderNumber={'034536'} />
+        </Modal>
+      }
       <section className={styles.bun}>
         <ConstructorElement 
         type="top"

@@ -12,8 +12,8 @@ import { ingredientPropType } from '../../utils/prop-types';
 export default function Main (props) {
   return (
     <section className={styles.main}>
-      <BurgerIngredients data = {props.data} handleClick={props.onClickIngredient} />
-      <BurgerConstructor data={burger} handleClick={props.onClickOrder}/>
+      <BurgerIngredients data = {props.data} />
+      <BurgerConstructor data={burger} />
     </section>
   );
 }
