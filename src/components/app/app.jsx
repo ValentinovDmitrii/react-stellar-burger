@@ -1,27 +1,27 @@
 import styles from "./app.module.css";
 import AppHeader from "../app-header/app-header";
 import Main from "../main/main";
-import React, {useState, useEffect} from "react";
-import { getIngredients } from '../../utils/burger-api';
+import React, { useEffect} from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getIngredients } from '../../services/reducers/ingredients';
 
 export default function App() {
-  const [state, setState] = useState({
-    ingredients: [], 
-    loading: true
-  });
+  const dispatch = useDispatch();
+
+  const { loadRequest, failedRequest, ingredients } = useSelector(state => state.ingredients);
 
   useEffect(() => {
-    (async () => {
-      const data = await getIngredients();
-      setState({ ingredients: data, loading: false });
-    })();
-  }, []);
+    dispatch(getIngredients());
+  }, [dispatch]);
 
-  if (state.loading || !state.ingredients) {return(<p>Загрузка данных...</p>)} else { 
+  if (loadRequest ) {return(<p>Загрузка данных...</p>)} 
+  else if (failedRequest) {return(<p>Не удалось получить данные!!!</p>)} 
+  else if (!ingredients) {return(<p>Нет данных!!!</p>)} 
+  else { 
   return (
     <div id="react-modals" className={styles.app}>
       <AppHeader />
-      <Main data={state.ingredients} />
+      <Main />
     </div>
   );}
 }

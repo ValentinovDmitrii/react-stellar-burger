@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import style from './ingredient-details.module.css';
-import { ingredientPropType } from '../../utils/prop-types';
 
-export default function IngredientDetails({ingredient}) {
+export default function IngredientDetails() {
+  const ingredient = useSelector(state => state.ingredientDetails);
+
   return (
     <>
       <img className={style.illustration} src={ingredient ? ingredient.image_large : null} alt='Иллюстрация'></img>
@@ -27,8 +29,4 @@ export default function IngredientDetails({ingredient}) {
       </section>
     </>
   );
-}
-
-IngredientDetails.propTypes = {
-  ingredient: ingredientPropType,
 }

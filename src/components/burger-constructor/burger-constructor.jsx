@@ -1,43 +1,49 @@
-import React, { useState } from "react";
-import PropTypes from 'prop-types';
-import { ingredientPropType } from '../../utils/prop-types';
+import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './burger-constructor.module.css';
 import OrderDetails from "../order-details/order-details";
 import Modal from "../modal/modal";
+import { NEW_ORDER, CLEAR_ORDER } from "../../services/actions/orderDetails";
 
-export default function BurgerConstructor ({data}) {
-  const bun = data.find(item => item.type === 'bun');
-  const ingredients = data.filter(item => item.type !== 'bun');
-  const totalPrice = React.useMemo(() => ingredients.reduce((acc, p) => acc + p.price, bun.price*2),[ingredients, bun]);
-  const [showOrderDetails, setShowOrderDetails] = useState(false);
+export default function BurgerConstructor () {
+  const burger = useSelector(state => state.burger);
+  const orderDetails = useSelector(state => state.orderDetails)
+  ;
+  const totalPrice = React.useMemo(() => burger.items.reduce((acc, p) => acc + p.price, (burger.bun) ? (burger.bun.price*2) : (0)),[burger]);
+
+  const dispatch = useDispatch();
 
   function handleOrderClick () {
-    toggleOrderDetails();
+    dispatch({
+      type: NEW_ORDER,
+      bun: burger.bun,
+      ingredients: burger.ingredients
+    }, [dispatch]);
   }
 
-  function toggleOrderDetails() {
-    setShowOrderDetails(!showOrderDetails);
+  function handleOrderClose() {
+    dispatch({type: CLEAR_ORDER}, [dispatch]);
   }
 
   return (
     <section className={styles.order}>
-      {showOrderDetails && 
-        <Modal title={''} onClose={toggleOrderDetails}>
-          <OrderDetails orderNumber={'034536'} />
+      {orderDetails.burgerBun && 
+        <Modal title={''} onClose={handleOrderClose}>
+          <OrderDetails />
         </Modal>
       }
       <section className={styles.bun}>
         <ConstructorElement 
         type="top"
         isLocked={true}
-        text={bun.name + ' (верх)'}
-        price={bun.price}
-        thumbnail={bun.image_mobile}
+        text={(burger.bun) ? (burger.bun.name + ' (верх)') : ('(верх)')}
+        price={(burger.bun) ? (burger.bun.price) : (0)}
+        thumbnail={(burger.bun) ? (burger.bun.image_mobile) : ('')}
         />
       </section>
       <section className={`${styles.burgerItems} custom-scroll`}>
-      {ingredients.map((item) => {
+      {burger.items.map((item) => {
         return (
           <section className={styles.item} key={item._id}>
             <DragIcon type="primary" />
@@ -54,10 +60,10 @@ export default function BurgerConstructor ({data}) {
         <ConstructorElement
           type="bottom"
           isLocked={true}
-          text={bun.name + ' (низ)'}
-          price={bun.price}
-          thumbnail={bun.image_mobile}
-        />
+          text={(burger.bun) ? (burger.bun.name + ' (низ)') : ('(низ)')}
+          price={(burger.bun) ? (burger.bun.price) : (0)}
+          thumbnail={(burger.bun) ? (burger.bun.image_mobile) : ('')}
+          />
       </section>
       <section className={styles.info}>
         <Button htmlType="button" type="primary" size="large" onClick={handleOrderClick}>Оформить заказ</Button>  
@@ -68,8 +74,4 @@ export default function BurgerConstructor ({data}) {
       </section>
     </section>
   );
-}
-
-BurgerConstructor.propTypes = {
-  data: PropTypes.arrayOf(ingredientPropType.isRequired).isRequired,
 }
