@@ -1,0 +1,41 @@
+.title {
+  composes: text_type_main-medium from "../common.css";
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-items: center;
+  /* margin-bottom: 24px; */
+  overflow: visible;
+  overflow-wrap: normal;
+  cursor: pointer;
+}
+
+.price {
+  composes: text_type_digits-default from "../common.css";
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.illustration {
+  width: 240px;
+  height: 120px;
+}
+
+.description {
+  composes: text_type_main-default from "../common.css";
+  white-space: normal;
+  text-align: center;
+}
+
+.container {
+  padding: 24px 16px 40px;
+  display: grid;
+  grid-template-columns: 272px 272px;
+  column-gap: 24px;
+  row-gap: 32px;
+}
