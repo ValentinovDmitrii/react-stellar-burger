@@ -6,7 +6,7 @@ import styles from './app-header.module.css';
 
 function AppHeader () {
   return (
-    <h1 className={styles.header}>
+    <div className={styles.header}>
       <section className={styles.buttons}>
         <a href='index.html' className={styles.button}>
           <BurgerIcon type="primary" />
@@ -22,7 +22,7 @@ function AppHeader () {
         <ProfileIcon type="secondary"/>
         <span >Личный кабинет</span>
       </a>
-    </h1>
+    </div>
   );
 }
 

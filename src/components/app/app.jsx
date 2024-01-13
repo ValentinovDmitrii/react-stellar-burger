@@ -15,13 +15,12 @@ export default function App() {
   }, [dispatch]);
 
   if (loadRequest ) {return(<p>Загрузка данных...</p>)} 
-  else if (failedRequest) {return(<p>Не удалось получить данные!!!</p>)} 
-  else if (!ingredients) {return(<p>Нет данных!!!</p>)} 
-  else { 
+  if (failedRequest) {return(<p>Не удалось получить данные!!!</p>)} 
+  if (!ingredients) {return(<p>Нет данных!!!</p>)} 
   return (
     <div id="react-modals" className={styles.app}>
       <AppHeader />
       <Main />
     </div>
-  );}
+  );
 }

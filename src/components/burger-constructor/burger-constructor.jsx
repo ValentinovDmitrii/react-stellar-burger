@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useDrop } from 'react-dnd';
 import { v4 as uuidv4 } from 'uuid';
@@ -45,14 +45,15 @@ export default function BurgerConstructor () {
     })
   }
 
-  const renderItem = useCallback((item, index) => {
+  function renderItem (item, index) {
     return (
       <BurgerConstructorItem
+        key={item.__key}
         item={item}
         index={index}
       />
     )
-  }, []);
+  };
 
   return (
     <section className={styles.order} ref={dropTarget}>
@@ -61,7 +62,7 @@ export default function BurgerConstructor () {
           <OrderDetails/>
         </Modal>
       }
-      <section className={styles.bun}>
+      <div className={styles.bun}>
         <ConstructorElement 
         type="top"
         isLocked={true}
@@ -69,11 +70,11 @@ export default function BurgerConstructor () {
         price={(burger.bun) ? (burger.bun.price) : (0)}
         thumbnail={(burger.bun) ? (burger.bun.image_mobile) : ('')}
         />
-      </section>
-      <section className={`${styles.burgerItems} custom-scroll`} key='burger'>
+      </div>
+      <div className={`${styles.burgerItems} custom-scroll`} key='burger'>
         {burger.items.map((item, index) => renderItem(item, index))}
-      </section>
-      <section className={styles.bun}>
+      </div>
+      <div className={styles.bun}>
         <ConstructorElement
           type="bottom"
           isLocked={true}
@@ -81,7 +82,7 @@ export default function BurgerConstructor () {
           price={(burger.bun) ? (burger.bun.price) : (0)}
           thumbnail={(burger.bun) ? (burger.bun.image_mobile) : ('')}
           />
-      </section>
+      </div>
       <section className={styles.info}>
         <Button htmlType="button" type="primary" size="large" onClick={handleOrderClick}>Оформить заказ</Button>  
         <section className={styles.price}>

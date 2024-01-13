@@ -58,11 +58,11 @@ export default function BurgerConstructorItem ({ item, index }) {
     })
   });  
 
-  // const opacity = isDrag ? 0 : 1;
+  const opacity = isDrag ? 0 : 1;
   dragToMove(dropToMove(ref));
 
   return (
-    <section ref={ref} className={styles.item} key={__key} data-handler-id={handlerId} draggable='true'>
+    <section ref={ref} className={styles.item} style={{opacity}} key={__key} data-handler-id={handlerId} draggable='true'>
       <DragIcon type="primary" />
       <ConstructorElement
         text={item.name}
