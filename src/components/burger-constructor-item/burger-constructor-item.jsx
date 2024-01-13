@@ -8,7 +8,6 @@ import { DEL_ITEM, MOVE_ITEM } from "../../services/actions/burger";
 export default function BurgerConstructorItem ({ item, index }) {
   const dispatch = useDispatch();
   const ref = useRef(null);
-  const { __key } = item;
   const handleDeleteItem = (item) => {
     dispatch({
       type: DEL_ITEM,
@@ -52,7 +51,7 @@ export default function BurgerConstructorItem ({ item, index }) {
 
   const [{ isDrag }, dragToMove] = useDrag({
     type: "sorting",
-    item: () => {return({__key, index})},
+    item: () => {return({index})},
     collect: (monitor) => ({
       isDrag: monitor.isDragging(),
     })
