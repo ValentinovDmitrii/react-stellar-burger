@@ -62,7 +62,7 @@ export default function BurgerConstructorItem ({ item, index }) {
   dragToMove(dropToMove(ref));
 
   return (
-    <section ref={ref} className={styles.item} style={{opacity}} key={__key} data-handler-id={handlerId} draggable='true'>
+    <section ref={ref} className={styles.item} style={{opacity}} data-handler-id={handlerId} draggable='true'>
       <DragIcon type="primary" />
       <ConstructorElement
         text={item.name}
