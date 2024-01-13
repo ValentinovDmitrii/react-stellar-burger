@@ -11,3 +11,16 @@ export const getIngredientsRequest = async () => {
     .catch(e => {console.error(e)});
     return data;
 }
+
+export const getOrderRequest = async (bodyRequest) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: bodyRequest
+};
+  const data = await fetch(`${BURGER_API_URL}/orders`, requestOptions)
+    .then(checkResponse)
+    .then(promise => {return promise})
+    .catch(e => {console.error(e)});
+    return data;
+}

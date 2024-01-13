@@ -47,7 +47,6 @@ export const ingredients = (state = initialState, action) => {
         loadRequest: false,
         failedRequest: true
       }  
-          // Реакция на прочие типы экшенов
       default:
         return state
     }

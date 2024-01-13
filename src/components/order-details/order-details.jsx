@@ -1,7 +1,6 @@
 import style from './order-details.module.css';
 import React from "react";
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 
 export default function OrderDetails() {
   const orderDetails = useSelector(state => state.orderDetails);
@@ -15,8 +14,4 @@ export default function OrderDetails() {
       <span className={style.wait}>Дождитесь готовности на орбитальной станции</span>
     </>    
   )
-}
-
-OrderDetails.propTypes = {
-  orderNumber: PropTypes.string.isRequired,
 }

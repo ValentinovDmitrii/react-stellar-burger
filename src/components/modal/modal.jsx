@@ -33,7 +33,7 @@ export default function Modal ({title, children, onClose}) {
     <ModalOverlay id={idOverlay} onClick={handleModalClose}>
       <div className={style.card}>
         <section className={style.header}>
-          <span className={style.title}>{title}</span>
+          {/* <span className={style.title}>{title}</span> */}
           <section className={style.closeButton}>
             <CloseIcon type="primary" onClick={onClose} />
           </section>

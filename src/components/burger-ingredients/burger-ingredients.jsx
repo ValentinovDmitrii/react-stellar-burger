@@ -74,14 +74,14 @@ export default function BurgerIngredients () {
       </section>
 
       <ul className={`${styles.chapters} custom-scroll`} onScroll={handleScrollIngredients}>
-        <li className={styles.chapter} ref={refBuns}>
-          <IngredientsCategory data={buns} title='Булки' handleClick={handleIngredientClick} />
+        <li className={styles.chapter} ref={refBuns} key='buns'>
+          <IngredientsCategory data={buns} title='Булки' onIngredientClick={handleIngredientClick} />
         </li>
-        <li className={styles.chapter} ref={refSauces}>
-          <IngredientsCategory data={sauces} title='Соусы' handleClick={handleIngredientClick} />
+        <li className={styles.chapter} ref={refSauces} key='sauces'>
+          <IngredientsCategory data={sauces} title='Соусы' onIngredientClick={handleIngredientClick} />
         </li>
-        <li className={styles.chapter} ref={refMains}>
-          <IngredientsCategory data={mains} title='Начинки' handleClick={handleIngredientClick} />
+        <li className={styles.chapter} ref={refMains} key='mains'>
+          <IngredientsCategory data={mains} title='Начинки' onIngredientClick={handleIngredientClick} />
         </li>
       </ul>
     </section>
