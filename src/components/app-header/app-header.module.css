@@ -1,0 +1,36 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: center;
+  justify-items: center;
+  padding: 16px 0;
+  margin: 0 auto;
+  align-items: center;
+  color: #8585AD;
+  min-width: 1280px;
+}
+
+.buttons {
+  composes: text_type_main-default from "../common.css";
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  composes: buttons;
+  justify-self: end;
+  margin-right: 0;
+  padding: 16px 20px;
+  cursor: pointer;
+  color: #8585AD;
+  text-decoration: none;
+}
+
+.button_active {
+  color: white;
+}

@@ -1,0 +1,35 @@
+.illustration {
+  width: 480px;
+  height: 240px;
+}
+
+.name {
+  composes: text_type_main-medium from "../common.css";
+  width: 100%;
+  margin: 16px 0 0 0;
+  text-align: center;
+}
+
+.nutrition {
+  margin: 32px 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  align-content: center;
+}
+
+.nutritionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #8585AD;
+  align-items: center;
+}
+
+.nutritionTitle {
+  composes: text_type_main-default from "../common.css";
+}
+
+.nutritionValue {
+  composes: text_type_digits-default from "../common.css";
+}
